@@ -10,14 +10,26 @@
 'use strict';
 
 import React, { Component } from 'react';
-import { Tab } from "../viro/navigation/TabNavigation";
-import { AppContainer } from "../viro/navigation/DrawerNavigation";
-import { AppRegistry, Text, View, ScrollView } from 'react-native';
-import { createStackNavigator, createAppContainer } from "react-navigation";
+
+import { AppRegistry, Text, View, ScrollView, StyleSheet} from 'react-native';
 
 
-
-
+import {
+  ViroScene,
+  ViroARScene,
+  ViroText,
+  ViroMaterials,
+  ViroBox,
+  Viro3DObject,
+  ViroAmbientLight,
+  ViroSpotLight,
+  ViroARPlane,
+  ViroARPlaneSelector,
+  ViroQuad,
+  ViroNode,
+  ViroAnimations,
+  ViroConstants
+} from 'react-viro';
 import {
   ViroVRSceneNavigator,
   ViroARSceneNavigator,
@@ -28,45 +40,48 @@ var createReactClass = require('create-react-class');
 /*
  * TODO: Add your API key below!!
  */
-var apiKey = "YOUR_API_KEY_HERE";
+var apiKey = "5ECFE036-0FFF-47A8-9895-0EB230B58245";
 
 var vrScenes = {
-    '360PhotoTour': require('./js/360PhotoTour/MainScene'),
-    'HumanBody': require('./js/HumanBody/MainScene'),
-    'ProductShowcase': require('./js/ProductShowcase/ProductShowcase'),
-    'ViroMediaPlayer': require('./js/ViroMediaPlayer/ViroTheatre'),
-    'ParticleEmitters': require('./js/ParticleEmitters/ViroParticleTemplates'),
-    'PhysicsSample': require('./js/PhysicsSample/BasicPhysicsSample'),
+  '360PhotoTour': require('./js/360PhotoTour/MainScene'),
+  'HumanBody': require('./js/HumanBody/MainScene'),
+  'ProductShowcase': require('./js/ProductShowcase/ProductShowcase'),
+  'ViroMediaPlayer': require('./js/ViroMediaPlayer/ViroTheatre'),
+  'ParticleEmitters': require('./js/ParticleEmitters/ViroParticleTemplates'),
+  'PhysicsSample': require('./js/PhysicsSample/BasicPhysicsSample'),
 }
 
 var arScenes = {
   'ARSimpleSample': require('./js/ARSample/HelloWorldSceneAR.js'),
   'ARPhysicsSample': require('./js/ARPhysicsSample/BasicPhysicsSample.js'),
-  'ARCarDemo' : require('./js/ARCarDemo/ARCarDemo.js'),
-  'ARPosterDemo' : require('./js/ARPosterDemo/ARPosterDemo.js'),
-  'BusinessCard' : require('./js/ARBusinessCard/BusinessCard.js'),
+  'ARCarDemo': require('./js/ARCarDemo/ARCarDemo.js'),
+  'ARPosterDemo': require('./js/ARPosterDemo/ARPosterDemo.js'),
+  'BusinessCard': require('./js/ARBusinessCard/BusinessCard.js'),
 }
 
 var showARScene = true;
 
 var ViroCodeSamplesSceneNavigator = createReactClass({
-  render: function() {
+  render: function () {
 
     if (showARScene) {
       return (
-        // <ViroARSceneNavigator
-        //   initialScene={{
-        //     scene: arScenes['ARSimpleSample'],
-        //   }}
-        //   apiKey={apiKey} />
-        <ScrollView>
 
+        
+
+        <ScrollView>
+            <ViroARSceneNavigator
+              initialScene={{
+                scene: arScenes['ARSimpleSample'],
+              }}
+              apiKey={apiKey} />
           <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: '#fff', width: 400, height: 1000 }}>
             <Text style={{ backgroundColor: 'white' }}> Buy screen</Text>
           </View>
-        </ScrollView>
+          </ScrollView>
+      
 
-        );
+      );
     } else {
       return (
         <ViroVRSceneNavigator
@@ -79,5 +94,16 @@ var ViroCodeSamplesSceneNavigator = createReactClass({
     }
   }
 });
+
+var styles = StyleSheet.create({
+  helloWorldTextStyle: {
+    fontFamily: 'Arial',
+    fontSize: 30,
+    color: '#ffffff',
+    textAlignVertical: 'center',
+    textAlign: 'center',
+  },
+});
+
 
 module.exports = ViroCodeSamplesSceneNavigator;
