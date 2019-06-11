@@ -10,10 +10,13 @@
 'use strict';
 
 import React, { Component } from 'react';
+import { Tab } from "../viro/navigation/TabNavigation";
+import { AppContainer } from "../viro/navigation/DrawerNavigation";
+import { AppRegistry, Text, View, ScrollView } from 'react-native';
+import { createStackNavigator, createAppContainer } from "react-navigation";
 
-import {
-  AppRegistry,
-} from 'react-native';
+
+
 
 import {
   ViroVRSceneNavigator,
@@ -51,11 +54,18 @@ var ViroCodeSamplesSceneNavigator = createReactClass({
 
     if (showARScene) {
       return (
-        <ViroARSceneNavigator
-          initialScene={{
-            scene: arScenes['ARSimpleSample'],
-          }}
-          apiKey={apiKey} />
+        // <ViroARSceneNavigator
+        //   initialScene={{
+        //     scene: arScenes['ARSimpleSample'],
+        //   }}
+        //   apiKey={apiKey} />
+        <ScrollView>
+
+          <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: '#fff', width: 400, height: 1000 }}>
+            <Text style={{ backgroundColor: 'white' }}> Buy screen</Text>
+          </View>
+        </ScrollView>
+
         );
     } else {
       return (
