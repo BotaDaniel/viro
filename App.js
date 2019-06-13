@@ -1,73 +1,45 @@
 /**
- * Copyright (c) 2015-present, Viro Media, Inc.
- * All rights reserved.
+ * Sample React Native App
+ * https://github.com/facebook/react-native
  *
- * This source code is licensed under the BSD-style license found in the
- * LICENSE file in the root directory of this source tree. An additional grant
- * of patent rights can be found in the PATENTS file in the same directory.
- *
+ * @format
+ * @flow
  */
-'use strict';
 
-import React, { Component } from 'react';
-
-import {
-  AppRegistry,
-} from 'react-native';
-
+import React, {Component} from 'react';
+import {Platform, StyleSheet, Text, View} from 'react-native';
 import {
   ViroVRSceneNavigator,
   ViroARSceneNavigator,
 } from 'react-viro';
 
-var createReactClass = require('create-react-class');
+import { createStackNavigator, createAppContainer } from "react-navigation";
 
-/*
- * TODO: Add your API key below!!
- */
-var apiKey = "YOUR_API_KEY_HERE";
 
-var vrScenes = {
-    '360PhotoTour': require('./js/360PhotoTour/MainScene'),
-    'HumanBody': require('./js/HumanBody/MainScene'),
-    'ProductShowcase': require('./js/ProductShowcase/ProductShowcase'),
-    'ViroMediaPlayer': require('./js/ViroMediaPlayer/ViroTheatre'),
-    'ParticleEmitters': require('./js/ParticleEmitters/ViroParticleTemplates'),
-    'PhysicsSample': require('./js/PhysicsSample/BasicPhysicsSample'),
+
+
+class HomeScreen extends React.Component {
+  render() {
+    return (
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <Text>Home Screen</Text>
+      </View>
+    );
+  }
 }
 
-var arScenes = {
-  'ARSimpleSample': require('./js/ARSample/HelloWorldSceneAR.js'),
-  'ARPhysicsSample': require('./js/ARPhysicsSample/BasicPhysicsSample.js'),
-  'ARCarDemo' : require('./js/ARCarDemo/ARCarDemo.js'),
-  'ARPosterDemo' : require('./js/ARPosterDemo/ARPosterDemo.js'),
-  'BusinessCard' : require('./js/ARBusinessCard/BusinessCard.js'),
-}
-
-var showARScene = true;
-
-var ViroCodeSamplesSceneNavigator = createReactClass({
-  render: function() {
-
-    if (showARScene) {
-      return (
-        <ViroARSceneNavigator
-          initialScene={{
-            scene: arScenes['ARSimpleSample'],
-          }}
-          apiKey={apiKey} />
-        );
-    } else {
-      return (
-        <ViroVRSceneNavigator
-          initialScene={{
-            scene: vrScenes['360PhotoTour'],
-          }}
-          apiKey={apiKey} />
-      );
-
-    }
+const AppNavigator = createStackNavigator({
+  Home: {
+    screen: HomeScreen
   }
 });
 
-module.exports = ViroCodeSamplesSceneNavigator;
+const AppContainer = createAppContainer(AppNavigator);
+
+export default class App extends React.Component {
+  render() {
+    return <AppContainer />;
+  }
+}
+
+
