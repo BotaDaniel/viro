@@ -11,7 +11,7 @@
 
 import React, { Component } from 'react';
 
-import { AppRegistry, Text, View, ScrollView, StyleSheet} from 'react-native';
+import { AppRegistry, Text, View, ScrollView, StyleSheet } from 'react-native';
 
 
 import {
@@ -57,6 +57,7 @@ var arScenes = {
   'ARCarDemo': require('./js/ARCarDemo/ARCarDemo.js'),
   'ARPosterDemo': require('./js/ARPosterDemo/ARPosterDemo.js'),
   'BusinessCard': require('./js/ARBusinessCard/BusinessCard.js'),
+  'My':require('./js/MyScene/Test.js')
 }
 
 var showARScene = true;
@@ -67,19 +68,20 @@ var ViroCodeSamplesSceneNavigator = createReactClass({
     if (showARScene) {
       return (
 
-        
+
 
         <ScrollView>
-            <ViroARSceneNavigator
-              initialScene={{
-                scene: arScenes['ARSimpleSample'],
-              }}
-              apiKey={apiKey} />
+          <ViroARSceneNavigator
+            initialScene={{
+              scene: arScenes['My'],
+            }}
+            apiKey={apiKey}
+          />
           <View style={{ flex: 1, alignItems: "center", justifyContent: "center", backgroundColor: '#fff', width: 400, height: 1000 }}>
             <Text style={{ backgroundColor: 'white' }}> Buy screen</Text>
           </View>
-          </ScrollView>
-      
+        </ScrollView>
+
 
       );
     } else {
