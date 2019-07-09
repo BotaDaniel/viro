@@ -57,7 +57,8 @@ var arScenes = {
   'ARCarDemo': require('./js/ARCarDemo/ARCarDemo.js'),
   'ARPosterDemo': require('./js/ARPosterDemo/ARPosterDemo.js'),
   'BusinessCard': require('./js/ARBusinessCard/BusinessCard.js'),
-  'My':require('./js/MyScene/Test.js')
+  'My': require('./js/MyScene/Test.js'),
+  'MyImage':require('./js/MyImage/ARCarDemo')
 }
 
 var showARScene = true;

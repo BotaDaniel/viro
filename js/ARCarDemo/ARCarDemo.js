@@ -104,7 +104,7 @@ var ARCarDemo = createReactClass({
           <ViroQuad
             rotation={[-90, 0, 0]}
             position={[0, -0.001, 0]}
-            width={2.5} height={2.5}
+            width={1} height={1}
             arShadowReceiver={true} />
 
         </ViroARImageMarker>
