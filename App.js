@@ -74,7 +74,7 @@ var ViroCodeSamplesSceneNavigator = createReactClass({
         <ScrollView>
           <ViroARSceneNavigator
             initialScene={{
-              scene: arScenes['My'],
+              scene: arScenes['MyImage'],
             }}
             apiKey={apiKey}
           />
